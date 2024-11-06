@@ -184,7 +184,7 @@ def load_chain(model_name="gpt-3.5-turbo", chain = "retrieval_chain"):
 
 def find_pattern(matches):
     
-    data = json.loads(Path("./data.json").read_text())
+    data = json.loads(Path("./database/protocolDB/UCI-ClinicalTrials.json").read_text())
     docs = []
     for protocol in data:
         if protocol["NCT_ID"] in matches:
@@ -249,7 +249,6 @@ def load_new_qa_chain():
 
     api_key = st.secrets["openai-key"]
     model = ChatOpenAI(model_name='gpt-4o', temperature=0.1, api_key = api_key)
-
     qa_system_prompt = """You are an assistant for question-answering tasks. \
         Use the following pieces of retrieved context to answer the question. \
         Please provide a concise answer. \
