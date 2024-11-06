@@ -78,7 +78,6 @@ def show_messages( input, chat_history, result, old_chain):
         pattern = r'\bNCT\d{8}\b'
         matches = re.findall(pattern, user_input_content)
         if len(matches)>0:
-            print(matches)
             docs = find_pattern(matches)
             contexts = load_new_history_chain( chat_history, input, docs)
             chain = load_new_qa_chain()
